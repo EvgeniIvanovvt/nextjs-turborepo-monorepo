@@ -24,10 +24,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # ESLint (uses turbo pipeline "lint")
       - name: ESLint
         run: pnpm lint
 
-      # Prettier check (your repo currently has only --write; CI should use --check)
       - name: Prettier (check)
         run: pnpm format:check
+
+      - name: TypeScript (check)
+        run: pnpm check-types
