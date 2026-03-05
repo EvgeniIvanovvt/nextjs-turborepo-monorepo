@@ -1,0 +1,14 @@
+version: 2
+updates:
+  # JS/TS deps (pnpm workspace is supported via npm ecosystem)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+  # GitHub Actions deps (actions/checkout, setup-node, pnpm/action-setup, etc.)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
