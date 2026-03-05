@@ -30,4 +30,4 @@ jobs:
 
       # Prettier check (your repo currently has only --write; CI should use --check)
       - name: Prettier (check)
-        run: pnpm exec prettier --check "**/*.{ts,tsx,md}"
+        run: pnpm format:check
