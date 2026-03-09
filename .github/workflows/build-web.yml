@@ -3,6 +3,7 @@ name: Build (web)
 on:
   pull_request:
     paths:
+      - ".github/workflows/**"
       - "apps/web/**"
       - "packages/**"
       - "pnpm-lock.yaml"
