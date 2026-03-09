@@ -1,0 +1,50 @@
+name: SonarCloud
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+
+jobs:
+  sonar:
+    name: Sonar scan
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: read
+
+    steps:
+      - name: Checkout (full history for better analysis)
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Optional but useful if you want Sonar to import coverage later:
+      # - name: Test (with coverage)
+      #   run: pnpm test -- --coverage
+
+      - name: Sonar scan
+        uses: SonarSource/sonarqube-scan-action@a31c9398be7ace6bbfaf30c0bd5d415f843d45e9
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=evgeniivanovvt
+            -Dsonar.projectKey=EvgeniIvanovvt_nextjs-turborepo-monorepo
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.sources=apps,packages
+            -Dsonar.exclusions=**/node_modules/**,**/.next/**,**/dist/**,**/build/**,**/coverage/**,**/*.d.ts
