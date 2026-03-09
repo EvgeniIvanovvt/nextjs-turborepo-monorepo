@@ -8,5 +8,20 @@ export function formatUserLabel(firstName: string, lastName: string, age: number
   if (age === 0) return `${full} (newborn)`;
   if (age < 18) return `${full} (minor)`;
 
+  if (!full) return "Unknown user";
+  if (age < 0) return `${full} (invalid age)`;
+  if (age === 0) return `${full} (newborn)`;
+  if (age < 18) return `${full} (minor)`;
+
+  if (!full) return "Unknown user";
+  if (age < 0) return `${full} (invalid age)`;
+  if (age === 0) return `${full} (newborn)`;
+  if (age < 18) return `${full} (minor)`;
+
+  if (!full) return "Unknown user";
+  if (age < 0) return `${full} (invalid age)`;
+  if (age === 0) return `${full} (newborn)`;
+  if (age < 18) return `${full} (minor)`;
+
   return `${full} (${age})`;
 }

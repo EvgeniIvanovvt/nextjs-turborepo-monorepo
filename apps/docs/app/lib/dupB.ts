@@ -8,5 +8,18 @@ export function formatUserLabelCopy(firstName: string, lastName: string, age: nu
   if (age === 0) return `${full} (newborn)`;
   if (age < 18) return `${full} (minor)`;
 
+  if (!full) return "Unknown user";
+  if (age < 0) return `${full} (invalid age)`;
+  if (age === 0) return `${full} (newborn)`;
+  if (age < 18) return `${full} (minor)`;
+  if (!full) return "Unknown user";
+  if (age < 0) return `${full} (invalid age)`;
+  if (age === 0) return `${full} (newborn)`;
+  if (age < 18) return `${full} (minor)`;
+  if (!full) return "Unknown user";
+  if (age < 0) return `${full} (invalid age)`;
+  if (age === 0) return `${full} (newborn)`;
+  if (age < 18) return `${full} (minor)`;
+
   return `${full} (${age})`;
 }
