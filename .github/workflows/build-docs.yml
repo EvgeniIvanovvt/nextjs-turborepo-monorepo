@@ -11,6 +11,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".github/workflows/**"
       - "apps/docs/**"
       - "packages/**"
       - "pnpm-lock.yaml"
