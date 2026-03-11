@@ -1,10 +1,10 @@
-name: Build (web)
+name: Build (client-panel)
 
 on:
   pull_request:
     paths:
       - ".github/workflows/**"
-      - "apps/web/**"
+      - "apps/client-panel/**"
       - "packages/**"
       - "pnpm-lock.yaml"
       - "package.json"
@@ -13,14 +13,14 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/**"
-      - "apps/web/**"
+      - "apps/client-panel/**"
       - "packages/**"
       - "pnpm-lock.yaml"
       - "package.json"
       - "turbo.json"
 
 jobs:
-  build-web:
+  build-client:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,4 +29,4 @@ jobs:
           node-version: 20
       - uses: pnpm/action-setup@v4
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter web build
+      - run: pnpm --filter client-panel build
